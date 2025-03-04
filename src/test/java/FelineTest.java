@@ -1,9 +1,9 @@
 import com.example.Feline;
 import static org.junit.Assert.*;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
@@ -11,8 +11,12 @@ import java.util.List;
 @RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
 
-    @Spy
-    Feline feline = new Feline();
+    Feline feline;
+
+    @Before
+    public void setUp() {
+        feline = new Feline();
+    }
 
     @Test
     public void eatMeatTest() throws Exception {
@@ -26,7 +30,6 @@ public class FelineTest {
 
     @Test
     public void getKittensTest() {
-        Mockito.when(feline.getKittens(1)).thenReturn(1);
         assertEquals(1, feline.getKittens());
     }
 
